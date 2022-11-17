@@ -10,16 +10,18 @@ class LanguageScreen extends GetView<LanguageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title:  Text("title".tr),
+        title:  Text("title".tr, style: const TextStyle(color: Colors.black),),
+        backgroundColor: Colors.grey.shade200,
+        elevation: 0,
         actions:  [GestureDetector(
           onTap:(){
             _settingModalBottomSheet(context);
           },
           child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Icon(Icons.settings),
+            child: Icon(Icons.settings, color: Colors.black,),
           ),
         )],
       ),
@@ -36,7 +38,7 @@ class LanguageScreen extends GetView<LanguageController> {
                 customTextField("age".tr, "your_age".tr),
                 const SizedBox(height: 10,),
                 customTextField("gender".tr, "your_gender".tr),
-                const SizedBox(height: 10,),
+                const SizedBox(height: 50,),
                 ElevatedButton(
                     onPressed: (){},
                     child:  Text(
@@ -46,9 +48,10 @@ class LanguageScreen extends GetView<LanguageController> {
                       ),
                     ),
                   style: ElevatedButton.styleFrom(
+                    primary: const Color(0xff101cc7),
                     minimumSize: const Size(500, 50),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(5),
                     )
                   )
                 ),
@@ -61,7 +64,7 @@ class LanguageScreen extends GetView<LanguageController> {
   }
   void _settingModalBottomSheet(context){
     showModalBottomSheet(
-        backgroundColor: Colors.grey.shade300,
+        backgroundColor: Colors.white,
         context: context,
         builder: (BuildContext bc){
           return SizedBox(
@@ -101,9 +104,10 @@ class LanguageScreen extends GetView<LanguageController> {
                           fontSize: 16,
                         ),),
                       style: ElevatedButton.styleFrom(
+                        primary: const Color(0xff101cc7),
                           minimumSize: const Size(500, 50),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25),
+                            borderRadius: BorderRadius.circular(7),
                           )
                       ),
                     ),
@@ -123,8 +127,8 @@ class LanguageScreen extends GetView<LanguageController> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(25),
+          color: Colors.blue.withOpacity(0.05),
+          borderRadius: BorderRadius.circular(7),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -152,26 +156,25 @@ class LanguageScreen extends GetView<LanguageController> {
   }
   Widget customTextField(String nameTitle, String nameHint){
     return Container(
-      height:90,
+      height: 50,
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(25),
+        color: Colors.blue.withOpacity(0.05),
+borderRadius: BorderRadius.circular(7)
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          mainAxisAlignment:  MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(nameTitle),
-            TextField(
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: nameHint,
-              ),
+      child: Column(
+
+        mainAxisAlignment:  MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+         // Text(nameTitle),
+          TextField(
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: nameHint,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 5, )
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
